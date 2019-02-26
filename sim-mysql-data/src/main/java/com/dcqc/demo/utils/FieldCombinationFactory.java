@@ -12,6 +12,11 @@ import org.springframework.context.annotation.Configuration;
  **/
 @Configuration
 public class FieldCombinationFactory {
+    /**
+     * 生成字段属性语句
+     * @param field
+     * @return
+     */
     @Bean
     public String CreateFieldStatement(Field field) {
         String NullCheck = null;

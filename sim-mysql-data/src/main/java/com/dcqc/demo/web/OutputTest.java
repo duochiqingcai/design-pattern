@@ -17,6 +17,6 @@ public class OutputTest {
 
     @RequestMapping("/")
     public String OutputMethod(){
-        return "bootstrapDemo";
+        return "mainPage";
     }
 }
