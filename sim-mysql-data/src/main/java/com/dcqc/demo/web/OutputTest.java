@@ -3,6 +3,8 @@ package com.dcqc.demo.web;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
+
 /**
  * @program: sim-mysql-data
  * @description
@@ -13,4 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping
 public class OutputTest {
 
+    @RequestMapping("/")
+    public String OutputMethod(){
+        return "bootstrapDemo";
+    }
 }
