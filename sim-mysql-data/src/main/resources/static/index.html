@@ -1,10 +1,74 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Layui CSS -->
+    <link rel="stylesheet" href="http://code.z01.com/v4/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <title>Hello, world!</title>
+    <!--内联样式表-->
+    <style type="text/css">
+        .layui-table td {
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello,This is the index flie!</h1>
+<div class="container">
+    <!-- Content here -->
+    <h1>Hello</h1>
+    <table class="layui-hide" id="submit"></table>
+
+</div>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Layui JS -->
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="layui/layui.js"></script>
+<script>
+    //一般直接写在一个js文件中
+    layui.use(['layer', 'form', 'table'], function () {
+        var layer = layui.layer
+            , form = layui.form
+            , table = layui.table;
+
+        layer.msg('欢迎来到我的网站');
+
+        //输入表格
+        table.render({
+            elem: '#submit' //指定原始表格元素选择器（推荐id选择器）
+            , url:'/data/testJson.json'
+            , height: 315 //容器高度static/data/testJson.json
+            , cols: [
+                [//设置表头
+                     {type:'numbers'}
+                    // ,{type:'radio'}
+                    ,{field: 'fieldName', edit:'text',width: 110, title: '字段名称'}
+                    , {field: 'fieldType',edit:'text', width: 110, title: '类型'}
+                    , {field: 'fieldLength',edit:'text', width: 110, title: '长度'}
+                    , {field: 'fieldDecimal',edit:'text', width: 110, title: '小数点'}
+                    , {field: 'fieldNull',type:'checkbox', width: 110, title: '不是null'}
+                    , {field: 'fieldPrimaryKey',type:'radio', width: 110, title: '主键'}
+                    , {field: 'fieldComment',edit:'text', title: '注释'}
+                ]
+            ]
+            //,…… //更多参数参考右侧目录：基本参数选项
+        });
+    });
+
+    //点击按钮，表格添加一行
+    // $('addTableRow').click(function () {
+    //     var tr = " <tr>" +
+    //         "  <td>11</td>" +
+    //         "  <td>22</td>" +
+    //         "  <td>33</td>" +
+    //         "  <td>44</td>" +
+    //         "  <td>55</td>" +
+    //         "  </tr>";
+    //     $(".layui-table").append(tr);
+    // });
+</script>
 </body>
 </html>

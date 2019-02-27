@@ -17,6 +17,11 @@ public class OutputTest {
 
     @RequestMapping("/")
     public String OutputMethod(){
+        return "index";
+    }
+    @RequestMapping("/1")
+    public String OutputMethod2(){
         return "mainPage";
     }
+
 }
