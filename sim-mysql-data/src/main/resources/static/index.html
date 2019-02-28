@@ -1,74 +1,143 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Layui CSS -->
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="http://code.z01.com/v4/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="layui/css/layui.css">
+    <link rel="stylesheet" href="http://code.z01.com/zico.min.css">
     <title>Hello, world!</title>
     <!--内联样式表-->
     <style type="text/css">
-        .layui-table td {
+        /*.table-bordered td{*/
+        /*padding: 0;*/
+        /*}*/
+        .table-bordered input,
+        select {
+            border: 0;
             padding: 0;
         }
     </style>
 </head>
+
 <body>
-<div class="container">
+<div class="row justify-content-center">
     <!-- Content here -->
-    <h1>Hello</h1>
-    <table class="layui-hide" id="submit"></table>
+    <div>
+        <button class="btn btn-sm btn-primary" onclick="addRow()">添加</button>
+    </div>
 
+    <div style="float: right;">
+        <table class="table table-bordered table-sm" style="width: 100%;margin: 1px" id="sql_Table">
+            <thead>
+            <tr>
+                <th scope="col" style="width: 40px">#</th>
+                <th scope="col" style="width: 110px">字段名称</th>
+                <th scope="col" style="width: 110px">类型</th>
+                <th scope="col" style="width: 110px">长度</th>
+                <th scope="col" style="width: 110px">小数点</th>
+                <th scope="col" style="width: 110px">不是null</th>
+                <th scope="col">注释</th>
+            </tr>
+            </thead>
+            <tbody id="sql-create-table">
+            </tbody>
+        </table>
+        <button type="button" class="btn btn-primary btn-block">提&nbsp&nbsp交</button>
+    </div>
 </div>
+
+
 <!-- Optional JavaScript -->
-<!-- jQuery first, then Layui JS -->
-<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-<script src="layui/layui.js"></script>
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="http://code.z01.com/jquery/jquery-3.2.1.min.js"></script>
+<script src="http://code.z01.com/v4/dist/js/popper.min.js"></script>
+<script src="http://code.z01.com/v4/dist/js/bootstrap.min.js"></script>
 <script>
-    //一般直接写在一个js文件中
-    layui.use(['layer', 'form', 'table'], function () {
-        var layer = layui.layer
-            , form = layui.form
-            , table = layui.table;
-
-        layer.msg('欢迎来到我的网站');
-
-        //输入表格
-        table.render({
-            elem: '#submit' //指定原始表格元素选择器（推荐id选择器）
-            , url:'/data/testJson.json'
-            , height: 315 //容器高度static/data/testJson.json
-            , cols: [
-                [//设置表头
-                     {type:'numbers'}
-                    // ,{type:'radio'}
-                    ,{field: 'fieldName', edit:'text',width: 110, title: '字段名称'}
-                    , {field: 'fieldType',edit:'text', width: 110, title: '类型'}
-                    , {field: 'fieldLength',edit:'text', width: 110, title: '长度'}
-                    , {field: 'fieldDecimal',edit:'text', width: 110, title: '小数点'}
-                    , {field: 'fieldNull',type:'checkbox', width: 110, title: '不是null'}
-                    , {field: 'fieldPrimaryKey',type:'radio', width: 110, title: '主键'}
-                    , {field: 'fieldComment',edit:'text', title: '注释'}
-                ]
-            ]
-            //,…… //更多参数参考右侧目录：基本参数选项
-        });
+    //打开页面运行函数
+    $(document).ready(function () {
+        addRow();
     });
 
-    //点击按钮，表格添加一行
-    // $('addTableRow').click(function () {
-    //     var tr = " <tr>" +
-    //         "  <td>11</td>" +
-    //         "  <td>22</td>" +
-    //         "  <td>33</td>" +
-    //         "  <td>44</td>" +
-    //         "  <td>55</td>" +
-    //         "  </tr>";
-    //     $(".layui-table").append(tr);
-    // });
+    //行数生成函数
+    var defaultNumber = 0;
+    var rowNumber = function () {
+        defaultNumber++;
+        return defaultNumber;
+    };
+    //表格行内数据封装
+    var packData = function () {
+        $('#sql_Table tbody tr')
+        var fieldName = $
+    };
+    //添加一行表格
+    var addRow = function () {
+        $('tbody').append(
+            // "<button class=\'btn btn-sm\' onclick=\'addRow()\' style=\'padding:0\'><i class=\'zi zi_plusSquare zi_2x\' zico=\'加号方形\'></i></button>"
+            "<tr>"
+            + "                    <th scope=\"row\">"
+            + rowNumber()
+            + "</th>"
+            + "                    <td><input class=\"input-block-level\" style=\"width: 100%;\" type=\"text\"></td>"
+            + "                    <td>"
+            + "                        <select id=\"inputState1\" class=\"input-block-level\" style=\"width: 100%;\">"
+            + "                            <option selected>varchar</option>"
+            + "                            <option selected>char</option>"
+            + "                            <option selected>int</option>"
+            + "                            <option selected>tinyint</option>"
+            + "                            <option selected>date</option>"
+            + "                            <option selected>mediumint</option>"
+            + "                            <option selected>varchar</option>"
+            + "                            <option selected>varchar</option>"
+            + "                        </select></td>"
+            + "                    <td><input class=\"input-block-level\" style=\"width: 100%;\" type=\"text\"></td>"
+            + "                    <td><input class=\"input-block-level\" style=\"width: 100%;\" type=\"text\" placeholder=\"默认为0\"></td>"
+            + "                    <td><input class=\"input-block-level\" style=\"width: 100%;\" type=\"checkbox\"></td>"
+            + "                    <td><input class=\"input-block-level\" style=\"width: 100%;\" type=\"text\"></td>"
+            + "                </tr>"
+        )
+    };
+
+
+    // $('#table').bootstrapTable({
+    //     columns: [{
+    //         field: 'fieldName',
+    //         title: '字段名称'
+    //     }, {
+    //         field: 'fieldType',
+    //         title: '类型'
+    //     }, {
+    //         field: 'fieldLength',
+    //         title: '长度'
+    //     }, {
+    //         field: 'fieldDecimal',
+    //         title: '小数点'
+    //     }, {
+    //         field: 'fieldNull',
+    //         title: '不是null',
+    //         switchable:true
+    //     }, {
+    //         field: 'fieldPrimaryKey',
+    //         title: '主键',
+    //         radio:true
+    //     }, {
+    //         field: 'fieldComment',
+    //         title: '注释'
+    //     }],
+    //     data: [{
+    //         id: 1,
+    //         name: 'Item 1',
+    //         price: '小数点'
+    //     }, {
+    //         id: 2,
+    //         name: 'Item 2',
+    //         price: '不是null'
+    //     }]
+    // })
 </script>
 </body>
+
 </html>
