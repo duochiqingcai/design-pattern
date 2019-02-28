@@ -62,42 +62,47 @@
         addRow();
     });
 
-    //行数生成函数
+    //增加一行表格生成函数
     var defaultNumber = 0;
     var rowNumber = function () {
         defaultNumber++;
         return defaultNumber;
     };
-    //表格行内数据封装
+    //将一行数据封装为字段
     var packData = function () {
-        $('#sql_Table tbody tr')
-        var fieldName = $
+        $('#sql_Table tbody tr').each(function (i) {
+            $(this).children('td').each(function (j) {
+                var id = $(this).children().attr('id');
+                alert($('#' + id).val());
+            })
+        });
+
+    };
+    //单行数据
+    var rowData = function () {
+
     };
     //添加一行表格
     var addRow = function () {
         $('tbody').append(
-            // "<button class=\'btn btn-sm\' onclick=\'addRow()\' style=\'padding:0\'><i class=\'zi zi_plusSquare zi_2x\' zico=\'加号方形\'></i></button>"
-            "<tr>"
-            + "                    <th scope=\"row\">"
-            + rowNumber()
-            + "</th>"
-            + "                    <td><input class=\"input-block-level\" style=\"width: 100%;\" type=\"text\"></td>"
-            + "                    <td>"
-            + "                        <select id=\"inputState1\" class=\"input-block-level\" style=\"width: 100%;\">"
-            + "                            <option selected>varchar</option>"
-            + "                            <option selected>char</option>"
-            + "                            <option selected>int</option>"
-            + "                            <option selected>tinyint</option>"
-            + "                            <option selected>date</option>"
-            + "                            <option selected>mediumint</option>"
-            + "                            <option selected>varchar</option>"
-            + "                            <option selected>varchar</option>"
-            + "                        </select></td>"
-            + "                    <td><input class=\"input-block-level\" style=\"width: 100%;\" type=\"text\"></td>"
-            + "                    <td><input class=\"input-block-level\" style=\"width: 100%;\" type=\"text\" placeholder=\"默认为0\"></td>"
-            + "                    <td><input class=\"input-block-level\" style=\"width: 100%;\" type=\"checkbox\"></td>"
-            + "                    <td><input class=\"input-block-level\" style=\"width: 100%;\" type=\"text\"></td>"
-            + "                </tr>"
+                "<tr>"
+                + "<th scope=\"row\">"
+                + rowNumber()
+                + "</th>"
+                + "            <td><input id=\'fieldName\' class=\'input-block-level\' style=\'width: 100%;\' type=\'text\'></td>"
+                + "                    <td><select id=\'fieldSelect\' class=\'input-block-level\' style=\'width: 100%;\'>"
+                + "                            <option selected>varchar</option>"
+                + "                            <option selected>char</option>"
+                + "                            <option selected>int</option>"
+                + "                            <option selected>tinyint</option>"
+                + "                            <option selected>date</option>"
+                + "                            <option selected>mediumint</option>"
+                + "                        </select></td>"
+                + "            <td><input id=\'fieldType\' class=\'input-block-level\' style=\'width: 100%;\' type=\'text\'></td>"
+                + "            <td><input id=\'fieldLength\' class=\"input-block-level\" style=\"width: 100%;\" type=\"text\" placeholder=\"默认为0\"></td>"
+                + "            <td><input id=\'fieldNull\' class=\'input-block-level\' style=\'width: 100%;\' type=\'checkbox\'></td>"
+                + "            <td><input id=\'fieldComment\' class=\'input-block-level\' style=\'width: 100%;\' type=\'text\'></td>"
+                + "</tr>"
         )
     };
 
