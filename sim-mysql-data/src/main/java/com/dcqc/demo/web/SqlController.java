@@ -2,6 +2,7 @@ package com.dcqc.demo.web;
 
 import com.dcqc.demo.entity.Field;
 import com.dcqc.demo.entity.Table;
+import com.dcqc.demo.entity.TestField;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -20,9 +21,11 @@ import java.util.ArrayList;
 public class SqlController {
     private static final Logger LOGGER= LoggerFactory.getLogger(SqlController.class);
 
-    @RequestMapping(value = "/submit",method = RequestMethod.POST)
-    public void CreateTable(@RequestParam("table")String table){
-
+    @RequestMapping(value = "/submit/field",method = RequestMethod.POST)
+    @ResponseBody
+    public String CreateTable(@RequestBody ArrayList<TestField> postData){
+        System.out.println(postData.toString());
+        return "test data";
     }
 
 

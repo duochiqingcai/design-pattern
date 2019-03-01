@@ -10,8 +10,12 @@
     <link rel="stylesheet" href="http://code.z01.com/v4/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://code.z01.com/zico.min.css">
     <title>Hello, world!</title>
-    <!--内联样式表-->
+    <!--表格内联样式表-->
     <style type="text/css">
+        div.container {
+            height: 100%;
+        }
+
         /*.table-bordered td{*/
         /*padding: 0;*/
         /*}*/
@@ -38,15 +42,15 @@
                 <th scope="col" style="width: 110px">字段名称</th>
                 <th scope="col" style="width: 110px">类型</th>
                 <th scope="col" style="width: 110px">长度</th>
-                <th scope="col" style="width: 110px">小数点</th>
                 <th scope="col" style="width: 110px">不是null</th>
                 <th scope="col">注释</th>
             </tr>
             </thead>
             <tbody id="sql-create-table">
+
             </tbody>
         </table>
-        <button type="button" class="btn btn-primary btn-block">提&nbsp&nbsp交</button>
+        <button type="button" class="btn btn-primary btn-block" onclick="submitData()">提&nbsp&nbsp交</button>
     </div>
 </div>
 
@@ -56,92 +60,26 @@
 <script src="http://code.z01.com/jquery/jquery-3.2.1.min.js"></script>
 <script src="http://code.z01.com/v4/dist/js/popper.min.js"></script>
 <script src="http://code.z01.com/v4/dist/js/bootstrap.min.js"></script>
+<script src="js/index.js"></script>
 <script>
-    //打开页面运行函数
-    $(document).ready(function () {
-        addRow();
-    });
-
-    //增加一行表格生成函数
-    var defaultNumber = 0;
-    var rowNumber = function () {
-        defaultNumber++;
-        return defaultNumber;
-    };
-    //将一行数据封装为字段
-    var packData = function () {
-        $('#sql_Table tbody tr').each(function (i) {
-            $(this).children('td').each(function (j) {
-                var id = $(this).children().attr('id');
-                alert($('#' + id).val());
-            })
+    //表格内容提交方法
+    var submitData = function () {
+        var tableData=packTableData();
+        console.log(JSON.stringify(tableData));
+        $.ajax({
+            url: '/submit/field',
+            type:'POST',
+            data:JSON.stringify(tableData),
+            contentType:'application/json;charset=utf-8',
+            success:function(data){
+                console.log(JSON.stringify(data));
+            },
+            error:function(){
+                alert('执行失败！')
+            },
+            dataType:'json'
         });
-
-    };
-    //单行数据
-    var rowData = function () {
-
-    };
-    //添加一行表格
-    var addRow = function () {
-        $('tbody').append(
-                "<tr>"
-                + "<th scope=\"row\">"
-                + rowNumber()
-                + "</th>"
-                + "            <td><input id=\'fieldName\' class=\'input-block-level\' style=\'width: 100%;\' type=\'text\'></td>"
-                + "                    <td><select id=\'fieldSelect\' class=\'input-block-level\' style=\'width: 100%;\'>"
-                + "                            <option selected>varchar</option>"
-                + "                            <option selected>char</option>"
-                + "                            <option selected>int</option>"
-                + "                            <option selected>tinyint</option>"
-                + "                            <option selected>date</option>"
-                + "                            <option selected>mediumint</option>"
-                + "                        </select></td>"
-                + "            <td><input id=\'fieldType\' class=\'input-block-level\' style=\'width: 100%;\' type=\'text\'></td>"
-                + "            <td><input id=\'fieldLength\' class=\"input-block-level\" style=\"width: 100%;\" type=\"text\" placeholder=\"默认为0\"></td>"
-                + "            <td><input id=\'fieldNull\' class=\'input-block-level\' style=\'width: 100%;\' type=\'checkbox\'></td>"
-                + "            <td><input id=\'fieldComment\' class=\'input-block-level\' style=\'width: 100%;\' type=\'text\'></td>"
-                + "</tr>"
-        )
-    };
-
-
-    // $('#table').bootstrapTable({
-    //     columns: [{
-    //         field: 'fieldName',
-    //         title: '字段名称'
-    //     }, {
-    //         field: 'fieldType',
-    //         title: '类型'
-    //     }, {
-    //         field: 'fieldLength',
-    //         title: '长度'
-    //     }, {
-    //         field: 'fieldDecimal',
-    //         title: '小数点'
-    //     }, {
-    //         field: 'fieldNull',
-    //         title: '不是null',
-    //         switchable:true
-    //     }, {
-    //         field: 'fieldPrimaryKey',
-    //         title: '主键',
-    //         radio:true
-    //     }, {
-    //         field: 'fieldComment',
-    //         title: '注释'
-    //     }],
-    //     data: [{
-    //         id: 1,
-    //         name: 'Item 1',
-    //         price: '小数点'
-    //     }, {
-    //         id: 2,
-    //         name: 'Item 2',
-    //         price: '不是null'
-    //     }]
-    // })
+    }
 </script>
 </body>
 

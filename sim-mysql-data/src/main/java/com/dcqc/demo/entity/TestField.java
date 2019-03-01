@@ -6,14 +6,14 @@ import org.springframework.stereotype.Component;
  * @program: sim-mysql-data
  * @description
  * @author: duochiqingcai
- * @create: 2019-02-25 17:52
+ * @create: 2019-03-01 17:09
  **/
 @Component
-public class Field {
+public class TestField {
     private String fieldName;
     private String fieldType;
     private Integer fieldLength;
-    private boolean fieldNull;
+    private String fieldNull;
     private String fieldComment;
 
     public String getFieldName() {
@@ -40,11 +40,11 @@ public class Field {
         this.fieldLength = fieldLength;
     }
 
-    public boolean isFieldNull() {
+    public String getFieldNull() {
         return fieldNull;
     }
 
-    public void setFieldNull(boolean fieldNull) {
+    public void setFieldNull(String fieldNull) {
         this.fieldNull = fieldNull;
     }
 
@@ -58,13 +58,12 @@ public class Field {
 
     @Override
     public String toString() {
-        return "Field{" +
+        return "TestField{" +
                 "fieldName='" + fieldName + '\'' +
                 ", fieldType='" + fieldType + '\'' +
                 ", fieldLength=" + fieldLength +
-                ", fieldNull=" + fieldNull +
+                ", fieldNull='" + fieldNull + '\'' +
                 ", fieldComment='" + fieldComment + '\'' +
                 '}';
     }
-
 }

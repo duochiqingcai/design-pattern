@@ -29,18 +29,6 @@ public class FieldCombinationFactory {
             NullCheck = "not null";
         }
 
-        if (field.isFieldPrimaryKey()) {
-            PrimaryKeyCheck = "primary key";
-        } else {
-            PrimaryKeyCheck = "";
-        }
-
-        if (field.isFieldUniqueIndex()) {
-            UniqueIndexCheck = "unique";
-        } else {
-            UniqueIndexCheck = "";
-        }
-
         return field.getFieldName()
                 + field.getFieldType() + " "
                 + "("
