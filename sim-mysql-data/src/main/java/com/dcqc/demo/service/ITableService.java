@@ -1,6 +1,6 @@
 package com.dcqc.demo.service;
 
-import com.dcqc.demo.entity.Table;
+import com.dcqc.demo.entity.dos.Table;
 
 /**
  * @program: sim-mysql-data

@@ -1,6 +1,6 @@
 package com.dcqc.demo.service.serviceImpl;
 
-import com.dcqc.demo.entity.Table;
+import com.dcqc.demo.entity.dos.Table;
 import com.dcqc.demo.service.ITableService;
 
 /**

@@ -1,13 +1,10 @@
 package com.dcqc.demo.web;
 
-import com.dcqc.demo.entity.Field;
-import com.dcqc.demo.entity.Table;
 import com.dcqc.demo.entity.TestField;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 

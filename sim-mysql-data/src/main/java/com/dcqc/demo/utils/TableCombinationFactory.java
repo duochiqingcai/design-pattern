@@ -1,8 +1,6 @@
 package com.dcqc.demo.utils;
 
-import com.dcqc.demo.entity.Field;
-import com.dcqc.demo.entity.SqlNoun;
-import com.dcqc.demo.entity.Table;
+import com.dcqc.demo.entity.dos.Table;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

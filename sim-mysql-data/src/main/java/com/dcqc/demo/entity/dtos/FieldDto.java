@@ -1,4 +1,4 @@
-package com.dcqc.demo.entity;
+package com.dcqc.demo.entity.dtos;
 
 import org.springframework.stereotype.Component;
 
@@ -6,14 +6,14 @@ import org.springframework.stereotype.Component;
  * @program: sim-mysql-data
  * @description
  * @author: duochiqingcai
- * @create: 2019-02-25 17:52
+ * @create: 2019-03-02 12:40
  **/
 @Component
-public class Field {
+public class FieldDto {
     private String fieldName;
     private String fieldType;
     private Integer fieldLength;
-    private boolean fieldNull;
+    private String isNull;
     private String fieldComment;
 
     public String getFieldName() {
@@ -40,12 +40,12 @@ public class Field {
         this.fieldLength = fieldLength;
     }
 
-    public boolean isFieldNull() {
-        return fieldNull;
+    public String getIsNull() {
+        return isNull;
     }
 
-    public void setFieldNull(boolean fieldNull) {
-        this.fieldNull = fieldNull;
+    public void setIsNull(String isNull) {
+        this.isNull = isNull;
     }
 
     public String getFieldComment() {
@@ -55,16 +55,4 @@ public class Field {
     public void setFieldComment(String fieldComment) {
         this.fieldComment = fieldComment;
     }
-
-    @Override
-    public String toString() {
-        return "Field{" +
-                "fieldName='" + fieldName + '\'' +
-                ", fieldType='" + fieldType + '\'' +
-                ", fieldLength=" + fieldLength +
-                ", fieldNull=" + fieldNull +
-                ", fieldComment='" + fieldComment + '\'' +
-                '}';
-    }
-
 }

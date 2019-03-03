@@ -1,4 +1,4 @@
-package com.dcqc.demo.entity;
+package com.dcqc.demo.entity.dos;
 
 /**
  * @program: sim-mysql-data

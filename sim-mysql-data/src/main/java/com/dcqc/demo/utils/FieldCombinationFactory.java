@@ -1,6 +1,6 @@
 package com.dcqc.demo.utils;
 
-import com.dcqc.demo.entity.Field;
+import com.dcqc.demo.entity.dos.Field;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
