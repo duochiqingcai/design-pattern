@@ -1,0 +1,1 @@
+这是观察者模式，customobserver通过自定义主题和观察者实现;observerfromjava通过使用Java内置类实现。
