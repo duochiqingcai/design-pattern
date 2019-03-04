@@ -1,1 +1,2 @@
-这是观察者模式，customobserver通过自定义主题和观察者实现;observerfromjava通过使用Java内置类实现。
+这是工厂模式，分别为简单工厂模式（simpleFactory）、工厂方法模式（factoryMethod）、抽象工厂模式（abstractFactory）.
+工厂方法模式中一个工厂只能生产一种产品，而抽象工厂模式可以生产多个产品。
